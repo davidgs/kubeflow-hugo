@@ -1,0 +1,154 @@
+{{ define "main" }}
+<div class="pt-24 pb-16 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Events Header -->
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                {{ .Title | default "Events" }}
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                {{ .Content | default "Join the Kubeflow community at conferences, meetups, and virtual events" }}
+            </p>
+        </div>
+
+        <!-- Event Sections -->
+        <div class="grid gap-12 lg:gap-16">
+            <!-- Upcoming Events -->
+            {{ $upcoming := .Site.GetPage "/events/upcoming-events" }}
+            {{ if $upcoming }}
+            <section>
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white flex items-center">
+                        <svg class="mr-3 h-8 w-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Upcoming Events
+                    </h2>
+                    <a href="{{ $upcoming.RelPermalink }}" class="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium">
+                        View all →
+                    </a>
+                </div>
+                
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {{ range first 6 $upcoming.Pages }}
+                    <article class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border border-green-200 dark:border-green-800 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                <span class="text-sm font-medium text-green-700 dark:text-green-300">Upcoming</span>
+                            </div>
+                            {{ if .Date }}
+                            <time class="text-sm text-gray-500 dark:text-gray-400">
+                                {{ .Date.Format "Jan 2, 2006" }}
+                            </time>
+                            {{ end }}
+                        </div>
+                        
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                            <a href="{{ .RelPermalink }}" class="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                                {{ .Title }}
+                            </a>
+                        </h3>
+                        
+                        {{ if .Summary }}
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                            {{ .Summary | truncate 120 }}
+                        </p>
+                        {{ end }}
+                        
+                        {{ if .Params.location }}
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                            <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            {{ .Params.location }}
+                        </div>
+                        {{ end }}
+                        
+                        <a href="{{ .RelPermalink }}" class="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium text-sm">
+                            Learn more
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </article>
+                    {{ end }}
+                </div>
+            </section>
+            {{ end }}
+
+            <!-- Past Events -->
+            {{ $past := .Site.GetPage "/events/past-events" }}
+            {{ if $past }}
+            <section>
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white flex items-center">
+                        <svg class="mr-3 h-8 w-8 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Past Events
+                    </h2>
+                    <a href="{{ $past.RelPermalink }}" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
+                        View archive →
+                    </a>
+                </div>
+                
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                    {{ range first 8 $past.Pages }}
+                    <article class="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="w-3 h-3 bg-gray-400 rounded-full"></div>
+                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Past Event</span>
+                        </div>
+                        
+                        {{ if .Date }}
+                        <time class="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                            {{ .Date.Format "Jan 2, 2006" }}
+                        </time>
+                        {{ end }}
+                        
+                        <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2 mt-2">
+                            <a href="{{ .RelPermalink }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                {{ .Title }}
+                            </a>
+                        </h3>
+                        
+                        {{ if .Params.location }}
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                            {{ .Params.location }}
+                        </p>
+                        {{ end }}
+                    </article>
+                    {{ end }}
+                </div>
+            </section>
+            {{ end }}
+        </div>
+
+        <!-- Call to Action -->
+        <div class="mt-16 text-center">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+                <h3 class="text-2xl font-bold mb-4">Host a Kubeflow Event</h3>
+                <p class="text-lg mb-6 opacity-90">
+                    Interested in organizing a meetup or speaking at an event? We'd love to help!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/docs/about/community/" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 hover:bg-gray-100 font-medium rounded-lg transition-colors">
+                        <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        Join Community
+                    </a>
+                    <a href="mailto:community@kubeflow.org" class="inline-flex items-center px-6 py-3 bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-medium rounded-lg transition-colors">
+                        <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
