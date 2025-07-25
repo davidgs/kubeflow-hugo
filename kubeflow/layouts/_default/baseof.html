@@ -26,12 +26,9 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Tailwind Typography Plugin -->
-    <script src="https://unpkg.com/@tailwindcss/typography@0.5.10/dist/index.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
-            plugins: [typography],
             theme: {
                 extend: {
                     colors: {
@@ -62,6 +59,8 @@
             }
         }
     </script>
+    <!-- Tailwind Typography Plugin (loaded after config) -->
+    <script src="https://unpkg.com/@tailwindcss/typography@0.5.10/dist/index.js"></script>
 
     <!-- Custom Styles -->
     <style>
@@ -157,18 +156,27 @@
         function initTheme() {
             const storedTheme = localStorage.getItem('theme');
             const theme = storedTheme || getSystemTheme();
+            console.log('Initializing theme:', theme, 'Stored:', storedTheme, 'System:', getSystemTheme());
             document.documentElement.classList.toggle('dark', theme === 'dark');
+            console.log('HTML classes after init:', document.documentElement.className);
         }
 
         function toggleTheme() {
             const isDark = document.documentElement.classList.contains('dark');
             const newTheme = isDark ? 'light' : 'dark';
+            console.log('Toggling theme from', isDark ? 'dark' : 'light', 'to', newTheme);
             document.documentElement.classList.toggle('dark', !isDark);
             localStorage.setItem('theme', newTheme);
+            console.log('HTML classes after toggle:', document.documentElement.className);
         }
 
-        // Initialize theme on page load
-        document.addEventListener('DOMContentLoaded', initTheme);
+                // Initialize theme immediately
+        initTheme();
+
+        // Also run on DOMContentLoaded as backup
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTheme);
+        }
 
         // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
