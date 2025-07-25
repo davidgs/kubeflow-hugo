@@ -156,18 +156,14 @@
         function initTheme() {
             const storedTheme = localStorage.getItem('theme');
             const theme = storedTheme || getSystemTheme();
-            console.log('Initializing theme:', theme, 'Stored:', storedTheme, 'System:', getSystemTheme());
             document.documentElement.classList.toggle('dark', theme === 'dark');
-            console.log('HTML classes after init:', document.documentElement.className);
         }
 
         function toggleTheme() {
             const isDark = document.documentElement.classList.contains('dark');
             const newTheme = isDark ? 'light' : 'dark';
-            console.log('Toggling theme from', isDark ? 'dark' : 'light', 'to', newTheme);
             document.documentElement.classList.toggle('dark', !isDark);
             localStorage.setItem('theme', newTheme);
-            console.log('HTML classes after toggle:', document.documentElement.className);
         }
 
                 // Initialize theme immediately
