@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=59577&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post 3 - Your Project Name</title>
+    <meta name="description" content="Your project description">
+
+    
+    <meta property="og:title" content="Post 3 - Your Project Name">
+    <meta property="og:description" content="Your project description">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="//localhost:59577/posts/post-3/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Post 3 - Your Project Name">
+    <meta name="twitter:description" content="Your project description">
+    
+
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/@tailwindcss/typography@0.5.10/dist/index.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            plugins: [typography],
+            theme: {
+                extend: {
+                    colors: {
+                        'ml-blue': '#1e90ff',
+                        'ai-purple': '#8b5cf6',
+                        'ml-cyan': '#06b6d4'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e90ff 0%, #8b5cf6 100%);
+        }
+
+        .code-block {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+        }
+
+        .dark .code-block {
+            background: #020617;
+            border: 1px solid #0f172a;
+        }
+
+         
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+            color: rgb(17 24 39);
+            font-weight: 600;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        .dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4, .dark .prose h5, .dark .prose h6 {
+            color: rgb(249 250 251);
+        }
+        .prose p {
+            margin-bottom: 1em;
+            line-height: 1.7;
+            color: rgb(55 65 81);
+        }
+        .dark .prose p {
+            color: rgb(209 213 219);
+        }
+        .prose ul, .prose ol {
+            margin: 1em 0;
+            padding-left: 1.5em;
+        }
+        .prose li {
+            margin-bottom: 0.5em;
+            color: rgb(55 65 81);
+        }
+        .dark .prose li {
+            color: rgb(209 213 219);
+        }
+        .prose a {
+            color: rgb(37 99 235);
+            text-decoration: underline;
+        }
+        .dark .prose a {
+            color: rgb(96 165 250);
+        }
+        .prose code {
+            background-color: rgb(243 244 246);
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+            color: rgb(17 24 39);
+        }
+        .dark .prose code {
+            background-color: rgb(55 65 81);
+            color: rgb(249 250 251);
+        }
+        .prose blockquote {
+            border-left: 4px solid rgb(209 213 219);
+            padding-left: 1rem;
+            margin: 1.5em 0;
+            font-style: italic;
+            color: rgb(75 85 99);
+        }
+        .dark .prose blockquote {
+            border-left-color: rgb(75 85 99);
+            color: rgb(156 163 175);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <header class="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
+    <nav class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+            
+            <div class="flex items-center space-x-2">
+                <a href="/" class="text-2xl font-bold text-ml-blue">Kubeflow</a>
+            </div>
+
+            
+            <div class="hidden md:flex items-center space-x-6">
+                
+                <a href="/" class="text-gray-700 dark:text-gray-300 hover:text-ml-blue transition-colors">
+                    Home
+                </a>
+                
+                <a href="/posts/" class="text-gray-700 dark:text-gray-300 hover:text-ml-blue transition-colors">
+                    Posts
+                </a>
+                
+                <a href="" class="text-gray-700 dark:text-gray-300 hover:text-ml-blue transition-colors">
+                    Tags
+                </a>
+                
+            </div>
+
+            
+            <button onclick="toggleTheme()" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </nav>
+</header>
+
+    <main>
+        
+<article class="pt-24 pb-16 bg-white dark:bg-gray-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <header class="mb-12">
+            
+            <nav class="mb-6">
+                <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                    <li><a href="//localhost:59577/" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a></li>
+                    <li><span class="mx-2">/</span></li>
+                    <li><a href="/posts/" class="hover:text-blue-600 dark:hover:text-blue-400 capitalize">posts</a></li>
+                    
+                </ol>
+            </nav>
+            
+            
+            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                Post 3
+            </h1>
+            
+            
+            
+            
+            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 pb-6 border-b border-gray-200 dark:border-gray-700">
+                
+                <time datetime="2023-03-15" class="flex items-center">
+                    <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    March 15, 2023
+                </time>
+                
+                
+                
+                
+                
+                <span class="flex items-center">
+                    <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    1 min read
+                </span>
+                
+                
+                
+                <a href="https://github.com/yourorg/yourproject-website/edit/main/content/posts/post-3/index.md" 
+                   class="flex items-center hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                   target="_blank" rel="noopener">
+                    <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                    Edit this page
+                </a>
+                
+            </div>
+        </header>
+        
+        
+        
+        <div class="mb-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Table of Contents</h2>
+            <div class="prose prose-sm dark:prose-invert">
+                <nav id="TableOfContents"></nav>
+            </div>
+        </div>
+        
+        
+        
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <p>Occaecat aliqua consequat laborum ut ex aute aliqua culpa quis irure esse magna dolore quis. Proident fugiat labore eu laboris officia Lorem enim. Ipsum occaecat cillum ut tempor id sint aliqua incididunt nisi incididunt reprehenderit. Voluptate ad minim sint est aute aliquip esse occaecat tempor officia qui sunt. Aute ex ipsum id ut in est velit est laborum incididunt. Aliqua qui id do esse sunt eiusmod id deserunt eu nostrud aute sit ipsum. Deserunt esse cillum Lorem non magna adipisicing mollit amet consequat.</p>
+<p><img src="/posts/post-3/bryce-canyon.jpg" alt="Bryce Canyon National Park"></p>
+<p>Sit excepteur do velit veniam mollit in nostrud laboris incididunt ea. Amet eu cillum ut reprehenderit culpa aliquip labore laborum amet sit sit duis. Laborum id proident nostrud dolore laborum reprehenderit quis mollit nulla amet veniam officia id id. Aliquip in deserunt qui magna duis qui pariatur officia sunt deserunt.</p>
+
+        </div>
+        
+        
+        <footer class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+            
+            
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tags</h3>
+                <div class="flex flex-wrap gap-2">
+                    
+                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+                        red
+                    </span>
+                    
+                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+                        green
+                    </span>
+                    
+                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+                        blue
+                    </span>
+                    
+                </div>
+            </div>
+            
+            
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                
+                <a href="/posts/post-2/" class="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <div>
+                        <div class="text-sm">Previous</div>
+                        <div class="font-medium">Post 2</div>
+                    </div>
+                </a>
+                
+                
+                
+            </div>
+        </footer>
+    </div>
+</article>
+
+    </main>
+
+    <footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-8 mt-16">
+    <div class="container mx-auto px-4">
+        
+        <div class="text-center mb-8">
+            <h3 class="text-xl font-bold text-ml-blue mb-2">Your Project Name</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+                Your project tagline or description
+            </p>
+        </div>
+
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            
+            <div>
+                <h4 class="font-semibold mb-4">Community</h4>
+                <div class="space-y-2">
+                    
+                </div>
+            </div>
+
+            
+            <div>
+                <h4 class="font-semibold mb-4">Developers</h4>
+                <div class="space-y-2">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 text-center">
+            <p class="text-sm">&copy; 2025 Your Organization.</p>
+        </div>
+    </div>
+</footer>
+
+    
+    <script>
+        function initTheme() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            document.documentElement.classList.toggle('dark', !isDark);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        
+        initTheme();
+    </script>
+</body>
+</html>

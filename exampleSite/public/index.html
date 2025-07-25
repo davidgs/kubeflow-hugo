@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+	<meta name="generator" content="Hugo 0.148.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=59577&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Project Name</title>
+    <meta name="description" content="Your project description">
+
+    
+    <meta property="og:title" content="Your Project Name">
+    <meta property="og:description" content="Your project description">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="//localhost:59577/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your Project Name">
+    <meta name="twitter:description" content="Your project description">
+    
+
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/@tailwindcss/typography@0.5.10/dist/index.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            plugins: [typography],
+            theme: {
+                extend: {
+                    colors: {
+                        'ml-blue': '#1e90ff',
+                        'ai-purple': '#8b5cf6',
+                        'ml-cyan': '#06b6d4'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e90ff 0%, #8b5cf6 100%);
+        }
+
+        .code-block {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+        }
+
+        .dark .code-block {
+            background: #020617;
+            border: 1px solid #0f172a;
+        }
+
+         
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+            color: rgb(17 24 39);
+            font-weight: 600;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        .dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4, .dark .prose h5, .dark .prose h6 {
+            color: rgb(249 250 251);
+        }
+        .prose p {
+            margin-bottom: 1em;
+            line-height: 1.7;
+            color: rgb(55 65 81);
+        }
+        .dark .prose p {
+            color: rgb(209 213 219);
+        }
+        .prose ul, .prose ol {
+            margin: 1em 0;
+            padding-left: 1.5em;
+        }
+        .prose li {
+            margin-bottom: 0.5em;
+            color: rgb(55 65 81);
+        }
+        .dark .prose li {
+            color: rgb(209 213 219);
+        }
+        .prose a {
+            color: rgb(37 99 235);
+            text-decoration: underline;
+        }
+        .dark .prose a {
+            color: rgb(96 165 250);
+        }
+        .prose code {
+            background-color: rgb(243 244 246);
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+            color: rgb(17 24 39);
+        }
+        .dark .prose code {
+            background-color: rgb(55 65 81);
+            color: rgb(249 250 251);
+        }
+        .prose blockquote {
+            border-left: 4px solid rgb(209 213 219);
+            padding-left: 1rem;
+            margin: 1.5em 0;
+            font-style: italic;
+            color: rgb(75 85 99);
+        }
+        .dark .prose blockquote {
+            border-left-color: rgb(75 85 99);
+            color: rgb(156 163 175);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <header class="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
+    <nav class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+            
+            <div class="flex items-center space-x-2">
+                <a href="/" class="text-2xl font-bold text-ml-blue">Kubeflow</a>
+            </div>
+
+            
+            <div class="hidden md:flex items-center space-x-6">
+                
+                <a href="/" class="text-gray-700 dark:text-gray-300 hover:text-ml-blue transition-colors">
+                    Home
+                </a>
+                
+                <a href="/posts/" class="text-gray-700 dark:text-gray-300 hover:text-ml-blue transition-colors">
+                    Posts
+                </a>
+                
+                <a href="" class="text-gray-700 dark:text-gray-300 hover:text-ml-blue transition-colors">
+                    Tags
+                </a>
+                
+            </div>
+
+            
+            <button onclick="toggleTheme()" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+    </nav>
+</header>
+
+    <main>
+        
+<section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl lg:text-6xl font-bold">
+            Your Project Name
+        </h1>
+        <p class="text-xl lg:text-2xl mt-4 text-blue-100">
+            Your project tagline or description
+        </p>
+    </div>
+</section>
+
+<section id="overview" class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                About Your Project
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                          Your project description goes here. You can use <a href="#" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">HTML links</a> and formatting.
+      
+                </p>
+                
+                <p class="text-lg text-gray-600 dark:text-gray-300 mt-4">
+                    <a href="/docs/getting-started/" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold">Get started</a> with your project today.
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        
+        
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+                Get Started
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                
+                
+                
+                <a href="/docs/getting-started/" class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow transform hover:-translate-y-1 transition-transform p-6 text-center group">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 transition-colors">Quick Start</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Get up and running quickly with our step-by-step guide.
+                    </p>
+                </a>
+                
+                
+                
+                
+                <a href="/docs/" class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow transform hover:-translate-y-1 transition-transform p-6 text-center group">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-green-600 transition-colors">Documentation</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Comprehensive documentation for all features.
+                    </p>
+                </a>
+                
+                
+                
+                
+                <a href="/examples/" class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow transform hover:-translate-y-1 transition-transform p-6 text-center group">
+                    <div class="text-purple-600 text-4xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 transition-colors">Examples</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        See real-world examples and use cases.
+                    </p>
+                </a>
+                
+                
+            </div>
+        </div>
+        
+
+        
+        
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                Key Components
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                
+                <div class="p-6 text-center">
+                    <img src="/images/component1-logo.png" alt="Component 1 Logo" class="w-16 h-16 mx-auto mb-4">
+                </div>
+                
+                <div class="p-6 pt-0">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Component 1</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        <a href="/docs/components/component1/" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 dark:text-blue-400">Component 1</a> Description of your first component.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                
+                <div class="p-6 text-center">
+                    <img src="/images/component2-logo.png" alt="Component 2 Logo" class="w-16 h-16 mx-auto mb-4">
+                </div>
+                
+                <div class="p-6 pt-0">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Component 2</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        <a href="/docs/components/component2/" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 dark:text-blue-400">Component 2</a> Description of your second component.
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+
+
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                Join our Community
+            </h2>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    We are an open and welcoming <a href="/community/" class="text-blue-600 hover:text-blue-800 dark:text-blue-400">community</a> of developers and contributors!
+                </p>
+            </div>
+        </div>
+        
+
+        
+        
+        <div class="text-center mb-16">
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
+                Trusted by
+            </h3>
+            <div class="flex justify-center items-center space-x-12 opacity-70">
+                
+                <img src="/images/logos/company1-light.svg" alt="Company 1 Logo" class="h-8 dark:hidden">
+                <img src="/images/logos/company1-dark.svg" alt="Company 1 Logo" class="h-8 hidden dark:block">
+                
+            </div>
+            
+            <div class="mt-8">
+                <a href="https://github.com/yourorg/yourproject/blob/main/ADOPTERS.md" target="_blank" rel="noopener"
+                   class="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors">
+                    see more adopters <i class="fab fa-github ml-2"></i>
+                </a>
+            </div>
+            
+        </div>
+        
+
+        
+        
+        <div class="text-center">
+            
+            <div class="max-w-sm mx-auto mb-6">
+                <img src="/images/cncf-logo.svg" alt="Foundation Logo" class="w-full dark:hidden">
+                <img src="/images/cncf-logo-white.svg" alt="Foundation Logo" class="w-full hidden dark:block">
+            </div>
+            
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+                Part of the Cloud Native Computing Foundation
+            </h3>
+        </div>
+        
+    </div>
+</section>
+
+    </main>
+
+    <footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-8 mt-16">
+    <div class="container mx-auto px-4">
+        
+        <div class="text-center mb-8">
+            <h3 class="text-xl font-bold text-ml-blue mb-2">Your Project Name</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+                Your project tagline or description
+            </p>
+        </div>
+
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            
+            <div>
+                <h4 class="font-semibold mb-4">Community</h4>
+                <div class="space-y-2">
+                    
+                </div>
+            </div>
+
+            
+            <div>
+                <h4 class="font-semibold mb-4">Developers</h4>
+                <div class="space-y-2">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 text-center">
+            <p class="text-sm">&copy; 2025 Your Organization.</p>
+        </div>
+    </div>
+</footer>
+
+    
+    <script>
+        function initTheme() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            document.documentElement.classList.toggle('dark', !isDark);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        
+        initTheme();
+    </script>
+</body>
+</html>
