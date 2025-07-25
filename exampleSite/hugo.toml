@@ -1,0 +1,165 @@
+baseURL = "/"
+title = "Your Project Name"
+description = "Your project description"
+
+enableRobotsTXT = true
+theme = "kubeflow"
+
+# Language and Content Settings
+enableGitInfo = true
+contentDir = "content/en"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableMissingTranslationPlaceholders = true
+disableKinds = ["taxonomy"]
+
+# Markup Configuration
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+  [markup.highlight]
+    noClasses = false
+    guessSyntax = "true"
+    style = "github-dark"
+    lineNos = true
+    codeFences = true
+
+# Services
+[services]
+  [services.googleAnalytics]
+    id = "YOUR-GA-ID"
+
+# Language Configuration
+[languages]
+  [languages.en]
+    title = "Your Project Name"
+    languageName = "English"
+    weight = 1
+    [languages.en.params]
+      description = "Your project description"
+
+# Site Parameters
+[params]
+  github_repo = "https://github.com/yourorg/yourproject-website"
+  github_project_repo = "https://github.com/yourorg/yourproject"
+  version = "v1.0"
+  copyright = "Your Organization."
+  support_policy_url = "/docs/support/"
+
+  # Component versions - configure these to match your project's versions
+  [params.component_versions]
+    model_registry = "0.2.21"
+    pipelines = "2.4.0"
+    deploykf = "0.1.5"
+    canonical = "1.8"
+    aws = "v1.8.0"
+    gke = "1.8"
+    azure = "1.8"
+    iks = "1.8"
+    redhat = "1.8"
+    vmware = "1.8"
+    nutanix = "1.8"
+    oracle = "1.8"
+    qbo = "1.8"
+    tf_serving = "2.15.0"
+
+  # Homepage content configuration
+  [params.homepage]
+    [params.homepage.hero]
+      title = "Your Project Name"
+      subtitle = "Your project tagline or description"
+
+    [params.homepage.features]
+      title = "About Your Project"
+      description = """
+      Your project description goes here. You can use <a href="#" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">HTML links</a> and formatting.
+      """
+      call_to_action = """<a href="/docs/getting-started/" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold">Get started</a> with your project today."""
+
+    [params.homepage.action_cards]
+      title = "Get Started"
+      [[params.homepage.action_cards.cards]]
+        title = "Quick Start"
+        icon = "fas fa-rocket"
+        color = "blue"
+        url = "/docs/getting-started/"
+        description = "Get up and running quickly with our step-by-step guide."
+      [[params.homepage.action_cards.cards]]
+        title = "Documentation"
+        icon = "fas fa-book"
+        color = "green"
+        url = "/docs/"
+        description = "Comprehensive documentation for all features."
+      [[params.homepage.action_cards.cards]]
+        title = "Examples"
+        icon = "fas fa-code"
+        color = "purple"
+        url = "/examples/"
+        description = "See real-world examples and use cases."
+
+    [params.homepage.components]
+      title = "Key Components"
+      [[params.homepage.components.items]]
+        name = "Component 1"
+        logo = "/images/component1-logo.png"
+        url = "/docs/components/component1/"
+        description = "Description of your first component."
+      [[params.homepage.components.items]]
+        name = "Component 2"
+        logo = "/images/component2-logo.png"
+        url = "/docs/components/component2/"
+        description = "Description of your second component."
+
+    [params.homepage.community]
+      title = "Join our Community"
+      description = """We are an open and welcoming <a href="/community/" class="text-blue-600 hover:text-blue-800 dark:text-blue-400">community</a> of developers and contributors!"""
+
+    [params.homepage.trusted_by]
+      title = "Trusted by"
+      adopters_link = "https://github.com/yourorg/yourproject/blob/main/ADOPTERS.md"
+      adopters_text = "see more adopters"
+      [[params.homepage.trusted_by.logos]]
+        name = "Company 1"
+        light = "/images/logos/company1-light.svg"
+        dark = "/images/logos/company1-dark.svg"
+
+    [params.homepage.cncf]
+      title = "Part of the Cloud Native Computing Foundation"
+      logo_light = "/images/cncf-logo.svg"
+      logo_dark = "/images/cncf-logo-white.svg"
+
+  # Documentation sections configuration for the main docs page
+  [params.docs]
+    title = "Documentation"
+    description = "Comprehensive guides and references"
+
+    [[params.docs.sections]]
+      title = "Getting Started"
+      path = "/docs/getting-started"
+      icon = "fas fa-rocket"
+      color = "green"
+      description = "Learn the basics and get your first setup running"
+      button_text = "Start learning"
+
+    [[params.docs.sections]]
+      title = "Components"
+      path = "/docs/components"
+      icon = "fas fa-cubes"
+      color = "blue"
+      description = "Explore the core components and their features"
+      button_text = "Explore components"
+
+    [[params.docs.sections]]
+      title = "API Reference"
+      path = "/docs/api"
+      icon = "fas fa-code"
+      color = "purple"
+      description = "Complete API documentation and reference"
+      button_text = "View API docs"

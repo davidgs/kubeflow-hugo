@@ -1,0 +1,4 @@
+<div class="alert alert-primary" role="alert">
+This {{ .Site.Title | default "project" }} component has <b>stable</b> status. {{ with .Site.Params.support_policy_url }}See the
+<a href="{{ . }}">{{ $.Site.Title | default "project" }} versioning policies</a>.{{ end }}
+</div>

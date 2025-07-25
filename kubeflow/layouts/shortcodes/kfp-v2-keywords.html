@@ -1,0 +1,5 @@
+{{ $keywords := .Site.Params.pipeline_keywords | default "pipeline, component, task, step, artifact, parameter, input, output, compiler, runner, SDK" }}
+<div class="alert alert-info" role="alert">
+  <h4 class="alert-heading">Pipeline Keywords</h4>
+  <p class="mb-0">Key terms: {{ $keywords }}</p>
+</div>

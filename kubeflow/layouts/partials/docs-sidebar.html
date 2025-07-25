@@ -1,37 +1,31 @@
-{{ $currentPage := . }}
-{{ $docsSection := .Site.GetPage "/docs" }}
+<aside class="w-64 bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 h-full overflow-y-auto">
+    <div class="p-4">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Documentation</h2>
 
-<nav class="docs-sidebar">
-    <ul class="space-y-2">
-        {{ range $docsSection.Sections }}
-        {{ $isActive := or (.IsAncestor $currentPage) (eq . $currentPage) }}
-        <li>
-            <a href="{{ .RelPermalink }}" 
-               class="flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors
-                      {{ if $isActive }}bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300{{ else }}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700{{ end }}">
-                {{ .Title }}
-                {{ if .Pages }}
-                <svg class="ml-auto h-4 w-4 {{ if $isActive }}rotate-90{{ end }} transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
+        <!-- Docs Navigation Tree -->
+        <nav class="space-y-2">
+            {{ $currentPage := . }}
+            {{ range .Site.Sections }}
+                {{ if eq .Section "docs" }}
+                    {{ $section := . }}
+                    <div class="mb-4">
+                        <a href="{{ .Permalink }}" class="block text-sm font-medium text-gray-900 dark:text-white hover:text-ml-blue transition-colors">
+                            {{ .Title }}
+                        </a>
+                        {{ if .Pages }}
+                        <ul class="ml-4 mt-2 space-y-1">
+                            {{ range .Pages }}
+                            <li>
+                                <a href="{{ .Permalink }}" class="block text-sm text-gray-600 dark:text-gray-400 hover:text-ml-blue transition-colors {{ if eq $currentPage . }}text-ml-blue font-medium{{ end }}">
+                                    {{ .Title }}
+                                </a>
+                            </li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+                    </div>
                 {{ end }}
-            </a>
-            
-            {{ if and .Pages $isActive }}
-            <ul class="mt-2 ml-4 space-y-1">
-                {{ range .Pages }}
-                {{ $isPageActive := eq . $currentPage }}
-                <li>
-                    <a href="{{ .RelPermalink }}" 
-                       class="block px-3 py-1 text-sm rounded-lg transition-colors
-                              {{ if $isPageActive }}bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400{{ else }}text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800{{ end }}">
-                        {{ .Title }}
-                    </a>
-                </li>
-                {{ end }}
-            </ul>
             {{ end }}
-        </li>
-        {{ end }}
-    </ul>
-</nav>
+        </nav>
+    </div>
+</aside>

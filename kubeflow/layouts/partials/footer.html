@@ -1,73 +1,42 @@
-<footer class="bg-gray-900 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Brand -->
+<footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-8 mt-16">
+    <div class="container mx-auto px-4">
+        <!-- Full-width Logo and Description -->
+        <div class="text-center mb-8">
+            <h3 class="text-xl font-bold text-ml-blue mb-2">{{ site.Title }}</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+                {{ .Site.Params.homepage.hero.subtitle | default .Site.Params.description | default "Open source software platform" }}
+            </p>
+        </div>
+
+        <!-- Two-column Links Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <!-- Community Links -->
             <div>
-                <div class="flex items-center space-x-2 mb-6">
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <div class="w-4 h-4 bg-white rounded-sm"></div>
-                    </div>
-                    <span class="text-xl font-bold">Kubeflow</span>
-                </div>
-                <p class="text-gray-400 mb-6">
-                    Machine Learning Workflows on Kubernetes
-                </p>
-                <div class="flex space-x-4">
+                <h4 class="font-semibold mb-4">Community</h4>
+                <div class="space-y-2">
                     {{ range .Site.Params.links.user }}
-                    <a href="{{ .url }}" class="text-gray-400 hover:text-white transition-colors" title="{{ .desc }}" {{ if strings.HasPrefix .url "http" }}target="_blank" rel="noopener"{{ end }}>
-                        <i class="{{ .icon }} h-5 w-5"></i>
+                    <a href="{{ .url }}" class="block text-sm hover:text-ml-blue transition-colors" target="_blank" rel="noopener">
+                        <i class="{{ .icon }} mr-2"></i>{{ .name }}
                     </a>
                     {{ end }}
                 </div>
             </div>
-            
-            <!-- Product -->
+
+            <!-- Developer Links -->
             <div>
-                <h4 class="font-semibold mb-4">Product</h4>
-                <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Enterprise</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Roadmap</a></li>
-                </ul>
-            </div>
-            
-            <!-- Resources -->
-            <div>
-                <h4 class="font-semibold mb-4">Resources</h4>
-                <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Tutorials</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Examples</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                </ul>
-            </div>
-            
-            <!-- Community -->
-            <div>
-                <h4 class="font-semibold mb-4">Community</h4>
-                <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Slack</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Forum</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Events</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contributors</a></li>
-                </ul>
+                <h4 class="font-semibold mb-4">Developers</h4>
+                <div class="space-y-2">
+                    {{ range .Site.Params.links.developer }}
+                    <a href="{{ .url }}" class="block text-sm hover:text-ml-blue transition-colors" target="_blank" rel="noopener">
+                        <i class="{{ .icon }} mr-2"></i>{{ .name }}
+                    </a>
+                    {{ end }}
+                </div>
             </div>
         </div>
-        
-        <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-400 text-sm">
-                © {{ now.Year }} {{ .Site.Params.copyright | default "Kubeflow. Licensed under Apache 2.0." }}
-            </p>
-            <div class="flex space-x-6 text-sm text-gray-400 mt-4 md:mt-0">
-                {{ if .Site.Params.privacy_policy }}
-                <a href="{{ .Site.Params.privacy_policy }}" class="hover:text-white transition-colors" target="_blank" rel="noopener">Privacy Policy</a>
-                {{ end }}
-                {{ if .Site.Params.trademark }}
-                <a href="{{ .Site.Params.trademark }}" class="hover:text-white transition-colors" target="_blank" rel="noopener">Trademark</a>
-                {{ end }}
-                <a href="{{ .Site.Params.github_project_repo | default "https://github.com/kubeflow/kubeflow" }}" class="hover:text-white transition-colors" target="_blank" rel="noopener">GitHub</a>
-            </div>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 text-center">
+            <p class="text-sm">&copy; {{ now.Year }} {{ .Site.Params.copyright | default .Site.Title }}</p>
         </div>
     </div>
 </footer>

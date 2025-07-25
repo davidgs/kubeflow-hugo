@@ -1,0 +1,12 @@
+{{ $kfp_version := .Site.Params.component_versions.pipelines | default "2.4.0" }}
+{{ $kf_version := .Site.Params.version | default "v1.10" }}
+<div class="alert alert-warning" role="alert">
+  <h4 class="alert-heading">Version Compatibility</h4>
+  <p class="mb-0">
+    This documentation is for Kubeflow Pipelines {{ $kfp_version }},
+    compatible with Kubeflow {{ $kf_version }}.
+    {{ with .Site.Params.version_compatibility_url }}
+    For version compatibility details, see our <a href="{{ . }}">compatibility matrix</a>.
+    {{ end }}
+  </p>
+</div>

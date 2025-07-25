@@ -1,0 +1,11 @@
+{{ $version := .Get "version" | default .Site.Params.version }}
+<div class="alert alert-info" role="alert">
+  <h4 class="alert-heading">Version Notice</h4>
+  <p class="mb-0">
+    {{ if .Inner }}
+      {{ .Inner | markdownify }}
+    {{ else }}
+      This documentation is for {{ .Site.Title | default "Kubeflow" }} {{ $version }}.
+    {{ end }}
+  </p>
+</div>

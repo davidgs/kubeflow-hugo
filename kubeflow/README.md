@@ -1,161 +1,286 @@
 # Kubeflow Hugo Theme
 
-A modern, developer-focused Hugo theme designed for machine learning and Kubernetes projects. This theme provides a clean, responsive design with dark mode support and interactive components perfect for technical documentation and project websites.
+A modern, responsive Hugo theme designed for technical documentation and project websites. Originally created for Kubeflow but designed to be reusable for any technical project.
 
 ## Features
 
-- **Modern Design**: Clean, professional layout with gradient accents
-- **Dark Mode**: Full dark/light theme support with automatic persistence
-- **Responsive**: Mobile-first design that works on all devices
-- **Performance**: Optimized for fast loading and smooth animations
-- **Accessibility**: Built with accessibility best practices
-- **SEO Optimized**: Proper meta tags and semantic HTML structure
-- **Interactive Components**:
-  - Hero section with call-to-action buttons
-  - Feature showcase cards
-  - Code examples with syntax highlighting
-  - Community engagement sections
-  - Documentation cards
-  - Newsletter signup
+- **📱 Responsive Design**: Mobile-first design that works on all devices
+- **🌙 Dark Mode Support**: Automatic dark/light mode with system preference detection
+- **📖 Beautiful Typography**: Built-in prose styling with Tailwind Typography
+- **🧩 Component System**: Rich set of shortcodes and reusable components
+- **🔧 Highly Configurable**: Homepage, documentation sections, and components all configurable via Hugo config
+- **⚡ Performance Optimized**: Fast loading with minimal JavaScript
+- **♿ Accessible**: WCAG compliant with proper semantic HTML
+- **🎨 Modern UI**: Clean, professional design with Tailwind CSS
 
-## Installation
+## Quick Start
 
-1. Add the theme to your Hugo site:
-```bash
-git submodule add https://github.com/davidgs/kubeflow-hugo.git themes/kubeflow
-```
+1. **Add the theme to your Hugo site:**
+   ```bash
+   git submodule add https://github.com/yourusername/kubeflow-hugo themes/kubeflow
+   ```
 
-2. Update your `hugo.toml` configuration:
-```toml
-theme = 'kubeflow'
-```
+2. **Update your `hugo.toml`:**
+   ```toml
+   theme = "kubeflow"
+   ```
+
+3. **Copy the example configuration** from `exampleSite/hugo.toml` and customize it for your project.
+
+4. **Start your development server:**
+   ```bash
+   hugo server
+   ```
 
 ## Configuration
 
-### Basic Configuration
+### Basic Site Configuration
 
 ```toml
-baseURL = 'https://example.com/'
-languageCode = 'en-us'
-title = 'Your Site Title'
-theme = 'kubeflow'
+baseURL = "/"
+title = "Your Project Name"
+description = "Your project description"
+theme = "kubeflow"
 
 [params]
-  version = "v1.8"
-  github_stars = "12.3k"
-  active_users = "50k+"
-  description = "Your site description"
+  github_repo = "https://github.com/yourorg/yourproject-website"
+  github_project_repo = "https://github.com/yourorg/yourproject"
+  version = "v1.0"
+  copyright = "Your Organization."
+  support_policy_url = "/docs/support/"
 ```
 
-### Menu Configuration
+### Homepage Content
+
+The homepage content is completely configurable through your site's `hugo.toml`:
 
 ```toml
-[menu]
-  [[menu.main]]
-    name = "Features"
-    url = "#features"
-    weight = 10
-  [[menu.main]]
-    name = "Examples"
-    url = "#examples"
-    weight = 20
-  [[menu.main]]
-    name = "Community"
-    url = "#community"
-    weight = 30
-  [[menu.main]]
-    name = "Docs"
-    url = "#docs"
-    weight = 40
+[params.homepage]
+  [params.homepage.hero]
+    title = "Your Project Name"
+    subtitle = "Your project tagline"
+
+  [params.homepage.features]
+    title = "About Your Project"
+    description = "Description of your project..."
+    call_to_action = "Call to action text with links..."
+
+  [params.homepage.action_cards]
+    title = "Get Started"
+    [[params.homepage.action_cards.cards]]
+      title = "Card Title"
+      icon = "fas fa-icon-name"
+      color = "blue"
+      url = "/path/"
+      description = "Card description"
+
+  [params.homepage.components]
+    title = "Key Components"
+    [[params.homepage.components.items]]
+      name = "Component Name"
+      logo = "/images/logo.png"
+      url = "/docs/component/"
+      description = "Component description"
+
+  [params.homepage.community]
+    title = "Join our Community"
+    description = "Community description with links"
+
+  [params.homepage.trusted_by]
+    title = "Trusted by"
+    adopters_link = "https://github.com/yourorg/yourproject/blob/main/ADOPTERS.md"
+    adopters_text = "see more adopters"
+    [[params.homepage.trusted_by.logos]]
+      name = "Company Name"
+      light = "/images/logos/company-light.svg"
+      dark = "/images/logos/company-dark.svg"
+
+  [params.homepage.cncf]
+    title = "Part of a foundation project."
+    logo_light = "/images/foundation-logo.svg"
+    logo_dark = "/images/foundation-logo-dark.svg"
 ```
 
-### Markup Configuration
+### Documentation Sections
+
+The main documentation page (`/docs/`) can be customized with configurable sections:
 
 ```toml
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-  [markup.highlight]
-    style = "github-dark"
-    lineNos = true
-    codeFences = true
+[params.docs]
+  title = "Documentation"
+  description = "Your documentation description"
+
+  [[params.docs.sections]]
+    title = "Getting Started"
+    path = "/docs/getting-started"
+    icon = "fas fa-rocket"
+    color = "green"
+    description = "Learn the basics and get your first workflow running"
+    button_text = "Start learning"
+
+  [[params.docs.sections]]
+    title = "Components"
+    path = "/docs/components"
+    icon = "fas fa-cubes"
+    color = "blue"
+    description = "Explore the core components"
+    button_text = "Explore components"
+
+  # Add more sections as needed...
+```
+
+**Fallback Behavior**: If no `[params.docs.sections]` are configured, the theme will automatically discover documentation sections from your content structure.
+
+**Available Colors**: `blue`, `green`, `purple`, `orange`, `cyan`, `gray`, `red`, `yellow`, etc.
+
+**Icon Support**: Uses Font Awesome classes (e.g., `fas fa-book`, `fas fa-cog`, `fas fa-rocket`).
+
+### Component Versions
+
+Configure component versions for use in shortcodes:
+
+```toml
+[params.component_versions]
+  model_registry = "0.2.21"
+  pipelines = "2.4.0"
+  deploykf = "0.1.5"
+  # Add other component versions as needed
+```
+
+## Available Shortcodes
+
+The theme includes a comprehensive set of shortcodes for rich content:
+
+### Content Shortcodes
+- `alert` - Styled alert boxes with different colors
+- `note` - Information notes
+- `card` / `cardpane` - Card layouts
+- `tab` / `tabpane` - Tabbed content
+- `pageinfo` - Page information boxes
+
+### Code and Media
+- `figure` - Enhanced image figures
+- `iframe` - Responsive iframes
+- `readfile` - Include external file content
+- `swaggerui` / `swaggerui-inline` - API documentation display
+
+### Version Management
+- `alpha-status`, `beta-status`, `stable-status` - Component status indicators
+- Various `*/latest-version` shortcodes for different components
+- `kf-version-notice` - Version-specific notices
+- `pipelines-compatibility` - Version compatibility information
+
+### Layout Blocks
+- `blocks/cover` - Hero/cover sections
+- `blocks/lead` - Lead paragraphs
+- `blocks/feature` - Feature highlights
+- `blocks/section` - Content sections
+
+## Status Shortcode Configuration
+
+The status shortcodes (`alpha-status`, `beta-status`, `stable-status`) are configurable:
+
+```toml
+[params]
+  # URL to your project's support/versioning policy page
+  support_policy_url = "/docs/support/"
 ```
 
 ## Content Structure
 
-The theme is designed for single-page websites with the following sections:
+### Homepage
 
-1. **Hero Section**: Main introduction with call-to-action buttons
-2. **Features Section**: Showcase key features with icons and descriptions
-3. **Code Examples**: Interactive code samples with copy functionality
-4. **Visualization**: Images and metrics showcasing your project
-5. **Community**: Community engagement links and newsletter signup
-6. **Documentation**: Links to documentation resources
+Create `content/en/_index.md`:
+```markdown
+---
+title: "Home"
+layout: "home"
+---
+
+This content is optional - the homepage layout is controlled by the theme configuration.
+```
+
+### Documentation
+
+The theme supports hierarchical documentation:
+
+```
+content/en/docs/
+├── _index.md                 # Main docs page
+├── getting-started/
+│   ├── _index.md            # Section overview
+│   ├── introduction.md      # Individual pages
+│   └── installation.md
+└── components/
+    ├── _index.md
+    ├── component1/
+    │   └── overview.md
+    └── component2/
+        └── setup.md
+```
 
 ## Customization
 
-### Colors
+### Colors and Styling
 
-The theme uses Tailwind CSS with custom color extensions:
-- Primary blue: `#1e90ff`
-- Purple accent: `#8b5cf6`
-- Cyan accent: `#06b6d4`
+The theme uses Tailwind CSS with custom color configuration. You can override colors by modifying the Tailwind config in `layouts/_default/baseof.html`.
 
-### Animations
+### Custom CSS
 
-Built-in animations include:
-- `animate-slide-up`: Slide up fade-in effect
-- `animate-fade-in`: Simple fade-in effect
-- `animate-float`: Floating animation for decorative elements
+Add custom styles in the `<style>` section of `layouts/_default/baseof.html` or create custom CSS files in `assets/css/`.
 
-### Dark Mode
+### Layout Overrides
 
-Dark mode is automatically handled by the theme's JavaScript. Users can toggle between light and dark modes, and their preference is saved in localStorage.
+Override any theme layout by creating the same file structure in your site's `layouts/` directory.
 
 ## Development
 
-### Prerequisites
+### Building the Theme
 
-- Hugo Extended (for SCSS processing)
-- Node.js (for asset processing)
+1. Clone the repository
+2. Navigate to the theme directory
+3. Create an example site for testing:
+   ```bash
+   hugo server --source exampleSite --themesDir ../..
+   ```
 
-### Asset Pipeline
-
-The theme includes:
-- `assets/css/main.css`: Main stylesheet with Tailwind CSS
-- `assets/js/main.js`: Theme JavaScript for interactivity
-
-### Building
-
-Assets are processed automatically by Hugo's asset pipeline. For development:
-
-```bash
-hugo server --themesDir=themes
-```
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## Contributing
+### Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly
+4. Test with the example site
 5. Submit a pull request
+
+## Theme/Content Separation
+
+This theme is designed to keep all site-specific content in configuration files rather than hard-coded in templates. This ensures:
+
+- The theme can be reused by different projects
+- Content updates don't require theme changes
+- Theme updates can be applied without losing customizations
+
+## Removed from Original Theme
+
+To make this theme truly reusable, the following Kubeflow-specific shortcodes were removed:
+- **Version-specific shortcodes**: `kf-*`, `kfp-*` files
+- **Deployment configurations**: `config-uri-*`, `config-file-*` files
+- **Provider-specific directories**: `aws/`, `azure/`, `gke/`, etc.
+- **Component-specific shortcodes**: `pipelines/`, `model-registry/`, etc.
+- **Project-specific content**: `pipelines-compatibility.html`, `tf-serving-version.html`
+
+If you need similar functionality, create project-specific shortcodes in your site's `layouts/shortcodes/` directory.
 
 ## License
 
-This theme is licensed under the Apache 2.0 License - see the LICENSE file for details.
+This theme is licensed under the Apache 2.0 License. See [LICENSE](LICENSE) for details.
 
-## Credits
+## Support
 
-- Built with [Hugo](https://gohugo.io/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-- Icons from [Heroicons](https://heroicons.com/)
-- Images from [Unsplash](https://unsplash.com/)
+- 📚 Documentation: See the `exampleSite/` directory for usage examples
+- 🐛 Issues: Report bugs and feature requests via GitHub Issues
+- 💬 Community: Join our community discussions
+
+## Acknowledgments
+
+Originally developed for the Kubeflow project, this theme has been generalized for use by any technical documentation site.

@@ -1,72 +1,57 @@
-<!-- Community Section -->
-<section id="community" class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+{{ $community := .Site.Params.homepage.community }}
+{{ $trustedBy := .Site.Params.homepage.trusted_by }}
+{{ $cncf := .Site.Params.homepage.cncf }}
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        {{ if $community }}
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Join the Community</h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
-                Connect with ML engineers and data scientists from around the world
-            </p>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
-                <div class="text-4xl text-purple-600 dark:text-purple-400 mb-4 mx-auto">💬</div>
-                <h3 class="font-semibold mb-2 text-gray-900 dark:text-white">Slack Community</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    Join 15k+ members
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                {{ $community.title | default "Join our Community" }}
+            </h2>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {{ $community.description | default "Join our community of developers and contributors!" | safeHTML }}
                 </p>
-                <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium">
-                    Join Now
-                </a>
-            </div>
-
-            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
-                <div class="text-4xl text-gray-800 dark:text-gray-200 mb-4 mx-auto">📚</div>
-                <h3 class="font-semibold mb-2 text-gray-900 dark:text-white">GitHub</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    {{ .Site.Params.github_stars }} stars
-                </p>
-                <a href="#" class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 font-medium">
-                    Contribute
-                </a>
-            </div>
-
-            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
-                <div class="text-4xl text-blue-600 dark:text-blue-400 mb-4 mx-auto">💭</div>
-                <h3 class="font-semibold mb-2 text-gray-900 dark:text-white">Forum</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    Get help & share
-                </p>
-                <a href="#" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
-                    Discuss
-                </a>
-            </div>
-
-            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
-                <div class="text-4xl text-green-600 dark:text-green-400 mb-4 mx-auto">📅</div>
-                <h3 class="font-semibold mb-2 text-gray-900 dark:text-white">Events</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    Monthly meetups
-                </p>
-                <a href="#" class="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium">
-                    RSVP
-                </a>
             </div>
         </div>
-        
-        <!-- Newsletter Signup -->
-        <div class="gradient-bg rounded-2xl p-8 text-center text-white">
-            <h3 class="text-2xl font-bold mb-4">Stay Updated</h3>
-            <p class="mb-6">Get the latest news, tutorials, and community highlights</p>
-            <div class="max-w-md mx-auto flex gap-4">
-                <input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    class="flex-1 px-4 py-2 rounded-lg bg-white text-gray-900 placeholder-gray-500 border-0"
-                />
-                <button class="px-6 py-2 bg-white text-blue-600 hover:bg-gray-100 rounded-lg font-medium transition-colors">
-                    Subscribe
-                </button>
+        {{ end }}
+
+        <!-- Trusted by section -->
+        {{ if $trustedBy.logos }}
+        <div class="text-center mb-16">
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
+                {{ $trustedBy.title | default "Trusted by" }}
+            </h3>
+            <div class="flex justify-center items-center space-x-12 opacity-70">
+                {{ range $trustedBy.logos }}
+                <img src="{{ .light }}" alt="{{ .name }} Logo" class="h-8 dark:hidden">
+                <img src="{{ .dark }}" alt="{{ .name }} Logo" class="h-8 hidden dark:block">
+                {{ end }}
             </div>
+            {{ if $trustedBy.adopters_link }}
+            <div class="mt-8">
+                <a href="{{ $trustedBy.adopters_link }}" target="_blank" rel="noopener"
+                   class="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors">
+                    {{ $trustedBy.adopters_text | default "see more" }} <i class="fab fa-github ml-2"></i>
+                </a>
+            </div>
+            {{ end }}
         </div>
+        {{ end }}
+
+        <!-- CNCF Section -->
+        {{ if $cncf }}
+        <div class="text-center">
+            {{ if $cncf.logo_light }}
+            <div class="max-w-sm mx-auto mb-6">
+                <img src="{{ $cncf.logo_light }}" alt="Foundation Logo" class="w-full dark:hidden">
+                <img src="{{ $cncf.logo_dark }}" alt="Foundation Logo" class="w-full hidden dark:block">
+            </div>
+            {{ end }}
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+                {{ $cncf.title | default "Part of a foundation project." }}
+            </h3>
+        </div>
+        {{ end }}
     </div>
 </section>
