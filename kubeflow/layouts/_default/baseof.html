@@ -150,8 +150,13 @@
 
     <!-- Theme Toggle Script -->
     <script>
+        function getSystemTheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
         function initTheme() {
-            const theme = localStorage.getItem('theme') || 'light';
+            const storedTheme = localStorage.getItem('theme');
+            const theme = storedTheme || getSystemTheme();
             document.documentElement.classList.toggle('dark', theme === 'dark');
         }
 
@@ -163,7 +168,14 @@
         }
 
         // Initialize theme on page load
-        initTheme();
+        document.addEventListener('DOMContentLoaded', initTheme);
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                document.documentElement.classList.toggle('dark', e.matches);
+            }
+        });
     </script>
 </body>
 </html>

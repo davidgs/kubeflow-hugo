@@ -239,9 +239,15 @@ Override any theme layout by creating the same file structure in your site's `la
 
 1. Clone the repository
 2. Navigate to the theme directory
-3. Create an example site for testing:
+3. Test the theme with the example site:
    ```bash
-   hugo server --source exampleSite --themesDir ../..
+   cd exampleSite
+   hugo server --themesDir .. --theme kubeflow
+   ```
+
+   Or from the root directory:
+   ```bash
+   hugo server --source exampleSite --themesDir . --theme kubeflow
    ```
 
 ### Contributing
