@@ -120,7 +120,8 @@
 
         function initTheme() {
             const storedTheme = localStorage.getItem('theme');
-            const theme = storedTheme || getSystemTheme();
+            // Default to light mode unless user has explicitly chosen dark mode
+            const theme = storedTheme || 'light';
             document.documentElement.classList.toggle('dark', theme === 'dark');
         }
 

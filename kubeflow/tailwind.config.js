@@ -15,6 +15,21 @@ module.exports = {
     "../../config.toml",
     "../../layouts/**/*.html",
   ],
+  safelist: [
+    // Dynamic color classes used in templates
+    "bg-orange-600",
+    "bg-purple-600",
+    "bg-blue-600",
+    "bg-green-600",
+    "bg-red-600",
+    "bg-yellow-600",
+    "hover:bg-orange-700",
+    "hover:bg-purple-700",
+    "hover:bg-blue-700",
+    "hover:bg-green-700",
+    "hover:bg-red-700",
+    "hover:bg-yellow-700",
+  ],
   darkMode: "class",
   theme: {
     extend: {
