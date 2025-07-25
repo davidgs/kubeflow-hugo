@@ -1,102 +1,127 @@
 # Kubeflow Hugo Theme
 
-A modern, responsive Hugo theme designed for technical documentation and project websites. Originally created for Kubeflow but designed to be reusable for any technical project.
+A modern, responsive Hugo theme for open source projects and technical communities.
 
 ## Features
 
-- **📱 Responsive Design**: Mobile-first design that works on all devices
-- **🌙 Dark Mode Support**: Automatic dark/light mode with system preference detection
-- **📖 Beautiful Typography**: Built-in prose styling with Tailwind Typography
-- **🧩 Component System**: Rich set of shortcodes and reusable components
-- **🔧 Highly Configurable**: Homepage, documentation sections, and components all configurable via Hugo config
-- **⚡ Performance Optimized**: Fast loading with minimal JavaScript
-- **♿ Accessible**: WCAG compliant with proper semantic HTML
-- **🎨 Modern UI**: Clean, professional design with Tailwind CSS
+- 🎨 Modern design with Tailwind CSS
+- 📱 Fully responsive layout
+- 🌙 Dark mode support
+- 🧩 Configurable homepage sections
+- 🔗 Dynamic action cards and components
+- 👥 Community and foundation integration
+- ⚡ Fast performance
 
-## Quick Start
+## Installation
 
-1. **Add the theme to your Hugo site:**
-   ```bash
-   git submodule add https://github.com/yourusername/kubeflow-hugo themes/kubeflow
-   ```
+1. Add as a git submodule to your Hugo site:
+```bash
+git submodule add https://github.com/your-org/kubeflow-theme themes/kubeflow
+```
 
-2. **Update your `hugo.toml`:**
-   ```toml
-   theme = "kubeflow"
-   ```
-
-3. **Copy the example configuration** from `exampleSite/hugo.toml` and customize it for your project.
-
-4. **Start your development server:**
-   ```bash
-   hugo server
-   ```
+2. Update your `config.toml`:
+```toml
+theme = "kubeflow"
+```
 
 ## Configuration
 
-### Basic Site Configuration
+### Basic Site Setup
 
 ```toml
-baseURL = "/"
-title = "Your Project Name"
+baseURL = "https://yoursite.com"
+title = "Your Project"
 description = "Your project description"
-theme = "kubeflow"
 
 [params]
-  github_repo = "https://github.com/yourorg/yourproject-website"
-  github_project_repo = "https://github.com/yourorg/yourproject"
-  version = "v1.0"
-  copyright = "Your Organization."
-  support_policy_url = "/docs/support/"
+  copyright = "Your Organization"
+
+  # Social/Community Links
+  [params.links]
+    [[params.links.user]]
+      name = "Twitter"
+      url = "https://twitter.com/yourproject"
+      icon = "fab fa-twitter"
+    [[params.links.developer]]
+      name = "GitHub"
+      url = "https://github.com/yourorg/yourproject"
+      icon = "fab fa-github"
 ```
 
-### Homepage Content
+### Homepage Configuration
 
-The homepage content is completely configurable through your site's `hugo.toml`:
+The theme supports a fully customizable homepage through configuration:
 
 ```toml
 [params.homepage]
+  # Hero Section
   [params.homepage.hero]
-    title = "Your Project Name"
-    subtitle = "Your project tagline"
+    title = "Your Project"
+    subtitle = "Your amazing project tagline"
 
+  # About/Features Section
   [params.homepage.features]
     title = "About Your Project"
-    description = "Description of your project..."
-    call_to_action = "Call to action text with links..."
+    description = "Detailed description of what your project does..."
+    call_to_action = "Get started with <a href='/docs/'>our documentation</a>."
 
+  # Action Cards
   [params.homepage.action_cards]
     title = "Get Started"
     [[params.homepage.action_cards.cards]]
-      title = "Card Title"
-      icon = "fas fa-icon-name"
+      title = "Quick Start"
+      icon = "fas fa-rocket"
       color = "blue"
-      url = "/path/"
-      description = "Card description"
+      url = "/quickstart/"
+      description = "Get up and running in minutes"
+    [[params.homepage.action_cards.cards]]
+      title = "Documentation"
+      icon = "fas fa-book"
+      color = "orange"
+      url = "/docs/"
+      description = "Complete guides and references"
+      [[params.homepage.action_cards.cards.buttons]]
+        text = "User Guide"
+        url = "/docs/user/"
+        icon = "fas fa-user"
+        color = "orange"
+      [[params.homepage.action_cards.cards.buttons]]
+        text = "API Reference"
+        url = "/docs/api/"
+        icon = "fas fa-code"
+        color = "blue"
 
+  # Components/Features Grid
   [params.homepage.components]
-    title = "Key Components"
+    title = "Key Features"
     [[params.homepage.components.items]]
-      name = "Component Name"
-      logo = "/images/logo.png"
-      url = "/docs/component/"
-      description = "Component description"
+      name = "Feature One"
+      logo = "/images/feature1-logo.png"
+      url = "/docs/feature1/"
+      description = "Description of your first key feature."
+    [[params.homepage.components.items]]
+      name = "Feature Two"
+      url = "/docs/feature2/"
+      description = "Description of your second feature."
 
+  # Community Section
   [params.homepage.community]
-    title = "Join our Community"
-    description = "Community description with links"
+    title = "Join Our Community"
+    description = "Connect with other users and contributors in our vibrant community!"
 
+  # Trusted By Section (optional)
   [params.homepage.trusted_by]
-    title = "Trusted by"
+    title = "Used by"
     adopters_link = "https://github.com/yourorg/yourproject/blob/main/ADOPTERS.md"
-    adopters_text = "see more adopters"
+    adopters_text = "see all users"
     [[params.homepage.trusted_by.logos]]
-      name = "Company Name"
-      light = "/images/logos/company-light.svg"
-      dark = "/images/logos/company-dark.svg"
+      name = "Company A"
+      light = "/images/logos/company-a-light.svg"
+      dark = "/images/logos/company-a-dark.svg"
 
+  # Foundation Section (optional)
   [params.homepage.cncf]
-    title = "Part of a foundation project."
+    title = "Part of the Example Foundation"
     logo_light = "/images/foundation-logo.svg"
     logo_dark = "/images/foundation-logo-dark.svg"
 ```
@@ -112,8 +137,8 @@ The main documentation page (`/docs/`) can be customized with configurable secti
 
   [[params.docs.sections]]
     title = "Getting Started"
-    path = "/docs/getting-started"
-    icon = "fas fa-rocket"
+    path = "/docs/started"
+    icon = "fas fa-arrow-alt-circle-right"
     color = "green"
     description = "Learn the basics and get your first workflow running"
     button_text = "Start learning"
@@ -135,140 +160,57 @@ The main documentation page (`/docs/`) can be customized with configurable secti
 
 **Icon Support**: Uses Font Awesome classes (e.g., `fas fa-book`, `fas fa-cog`, `fas fa-rocket`).
 
-### Component Versions
-
-Configure component versions for use in shortcodes:
-
-```toml
-[params.component_versions]
-  model_registry = "0.2.21"
-  pipelines = "2.4.0"
-  deploykf = "0.1.5"
-  # Add other component versions as needed
-```
-
-## Available Shortcodes
-
-The theme includes a comprehensive set of shortcodes for rich content:
-
-### Content Shortcodes
-- `alert` - Styled alert boxes with different colors
-- `note` - Information notes
-- `card` / `cardpane` - Card layouts
-- `tab` / `tabpane` - Tabbed content
-- `pageinfo` - Page information boxes
-
-### Code and Media
-- `figure` - Enhanced image figures
-- `iframe` - Responsive iframes
-- `readfile` - Include external file content
-- `swaggerui` / `swaggerui-inline` - API documentation display
-
-### Version Management
-- `alpha-status`, `beta-status`, `stable-status` - Component status indicators
-- Various `*/latest-version` shortcodes for different components
-- `kf-version-notice` - Version-specific notices
-- `pipelines-compatibility` - Version compatibility information
-
-### Layout Blocks
-- `blocks/cover` - Hero/cover sections
-- `blocks/lead` - Lead paragraphs
-- `blocks/feature` - Feature highlights
-- `blocks/section` - Content sections
-
-## Status Shortcode Configuration
-
-The status shortcodes (`alpha-status`, `beta-status`, `stable-status`) are configurable:
-
-```toml
-[params]
-  # URL to your project's support/versioning policy page
-  support_policy_url = "/docs/support/"
-```
-
-## Content Structure
-
-### Homepage
-
-Create `content/en/_index.md`:
-```markdown
----
-title: "Home"
-layout: "home"
----
-
-This content is optional - the homepage layout is controlled by the theme configuration.
-```
-
-### Documentation
-
-The theme supports hierarchical documentation:
-
-```
-content/en/docs/
-├── _index.md                 # Main docs page
-├── getting-started/
-│   ├── _index.md            # Section overview
-│   ├── introduction.md      # Individual pages
-│   └── installation.md
-└── components/
-    ├── _index.md
-    ├── component1/
-    │   └── overview.md
-    └── component2/
-        └── setup.md
-```
-
 ## Customization
 
-### Colors and Styling
+### Styling
 
-The theme uses Tailwind CSS with custom color configuration. You can override colors by modifying the Tailwind config in `layouts/_default/baseof.html`.
+The theme uses Tailwind CSS. You can customize colors and styling by:
 
-### Custom CSS
-
-Add custom styles in the `<style>` section of `layouts/_default/baseof.html` or create custom CSS files in `assets/css/`.
+1. Overriding CSS in your site's `assets/css/` directory
+2. Customizing Tailwind configuration
+3. Using Hugo's template override system
 
 ### Layout Overrides
 
-Override any theme layout by creating the same file structure in your site's `layouts/` directory.
+You can override any theme template by creating the same file structure in your site's `layouts/` directory.
 
-## Development
+## Available Shortcodes
 
-### Building the Theme
+The theme includes these generic, reusable shortcodes:
 
-1. Clone the repository
-2. Navigate to the theme directory
-3. Test the theme with the example site:
-   ```bash
-   cd exampleSite
-   hugo server --themesDir .. --theme kubeflow
-   ```
+### Content Organization
+- `alert` - Display alert boxes with different styles
+- `card` - Create content cards
+- `cardpane` - Container for multiple cards
+- `note` - Display informational notes
+- `pageinfo` - Page metadata display
 
-   Or from the root directory:
-   ```bash
-   hugo server --source exampleSite --themesDir . --theme kubeflow
-   ```
+### Status Indicators
+- `alpha-status` - Show alpha status with project name (configurable)
+- `beta-status` - Show beta status with project name (configurable)
+- `stable-status` - Show stable status with project name (configurable)
+- `needs-update` - Indicate outdated documentation
 
-### Contributing
+### Content Display
+- `figure` - Enhanced image display with captions
+- `iframe` - Embedded iframe content
+- `imgproc` - Image processing and display
+- `conditional-text` - Conditional content based on parameters
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test with the example site
-5. Submit a pull request
+### Interactive Elements
+- `tab` / `tabpane` - Tabbed content organization
+- `swaggerui` / `swaggerui-inline` - API documentation display
 
-## Theme/Content Separation
-
-This theme is designed to keep all site-specific content in configuration files rather than hard-coded in templates. This ensures:
-
-- The theme can be reused by different projects
-- Content updates don't require theme changes
-- Theme updates can be applied without losing customizations
+### Blocks (Complex Components)
+- `blocks/cover` - Hero/cover sections
+- `blocks/feature` - Feature highlights
+- `blocks/lead` - Lead paragraphs
+- `blocks/section` - Generic content sections
 
 ## Removed from Original Theme
 
 To make this theme truly reusable, the following Kubeflow-specific shortcodes were removed:
+
 - **Version-specific shortcodes**: `kf-*`, `kfp-*` files
 - **Deployment configurations**: `config-uri-*`, `config-file-*` files
 - **Provider-specific directories**: `aws/`, `azure/`, `gke/`, etc.
@@ -277,16 +219,36 @@ To make this theme truly reusable, the following Kubeflow-specific shortcodes we
 
 If you need similar functionality, create project-specific shortcodes in your site's `layouts/shortcodes/` directory.
 
+## Status Shortcode Configuration
+
+The status shortcodes (`alpha-status`, `beta-status`, `stable-status`) are now configurable:
+
+```toml
+[params]
+  # URL to your project's support/versioning policy page
+  support_policy_url = "/docs/support/"
+```
+
+Usage:
+```markdown
+{{< alpha-status >}}
+{{< beta-status feedbacklink="https://github.com/yourorg/feedback" >}}
+{{< stable-status >}}
+```
+
+## Development
+
+1. Clone the theme repository
+2. Make your changes
+3. Test with a Hugo site
+4. Submit a pull request
+
 ## License
 
-This theme is licensed under the Apache 2.0 License. See [LICENSE](LICENSE) for details.
+[License information]
 
 ## Support
 
-- 📚 Documentation: See the `exampleSite/` directory for usage examples
-- 🐛 Issues: Report bugs and feature requests via GitHub Issues
-- 💬 Community: Join our community discussions
-
-## Acknowledgments
-
-Originally developed for the Kubeflow project, this theme has been generalized for use by any technical documentation site.
+- 📖 [Documentation](link-to-docs)
+- 💬 [Community Forum](link-to-forum)
+- 🐛 [Issue Tracker](link-to-issues)
